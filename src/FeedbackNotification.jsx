@@ -41,7 +41,7 @@ class FeedbackNotification extends Component {
 
         // get className and notificationText, can both be empty
         var notificationText = typeof this.props.notificationText === 'undefined' ? '' : this.props.notificationText.value;
-        var className = typeof this.props.className === 'undefined' ? undefined : this.props.notificationText.value;
+        var className = typeof this.props.className === 'undefined' ? undefined : this.props.className.value;
 
         return <Notification 
             showNotification = {this.props.showNotification}
