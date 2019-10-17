@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="itvisors.feedbacknotification.FeedbackNotification" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Web"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Feedback Notification</name>
+    <description>Widget used to add notifications to your application. Based on https://github.com/fkhadra/react-toastify</description>
+    <icon/>
+    <properties>
+        <property key="sampleText" type="string" required="false">
+            <caption>Default value</caption>
+            <category>General</category>
+            <description>Sample text input</description>
+        </property>
+    </properties>
+</widget>
