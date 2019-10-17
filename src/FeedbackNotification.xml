@@ -7,10 +7,102 @@
     <description>Widget used to add notifications to your application. Based on https://github.com/fkhadra/react-toastify</description>
     <icon/>
     <properties>
-        <property key="sampleText" type="string" required="false">
-            <caption>Default value</caption>
-            <category>General</category>
-            <description>Sample text input</description>
-        </property>
+        <propertyGroup caption="General">
+            <property key="showNotification" type="attribute" required="true">
+                <caption>Show Noticication</caption>
+                <description>Boolean that can be set to true to show a message. The widget will change it back to false after the message is shown.</description>
+                <attributeTypes>
+                    <attributeType name="Boolean"/>
+                </attributeTypes>
+            </property>
+            <property key="notificationText" type="attribute" required="true">
+                <caption>Notification Text</caption>
+                <description>Text to show in the notification.</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                </attributeTypes>
+            </property>
+            <property key="className" type="attribute" required="false">
+                <caption>Class</caption>
+                <description>Class to give to a specific notification.</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                </attributeTypes>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Behavior">
+            <property key="position" type="enumeration" required="true" defaultValue="topRight">
+                <caption>Position</caption>
+                <description>Position of the message.</description>
+                <enumerationValues>
+                    <enumerationValue key="topRight">Top right</enumerationValue>
+                    <enumerationValue key="topLeft">Top left</enumerationValue>
+                    <enumerationValue key="topCenter">Top center</enumerationValue>
+                    <enumerationValue key="bottomRight">Bottom right</enumerationValue>
+                    <enumerationValue key="bottomLeft">Bottom left</enumerationValue>
+                    <enumerationValue key="bottomCenter">Bottom center</enumerationValue>
+                </enumerationValues>
+            </property>
+            <property key="transition" type="enumeration" required="true" defaultValue="Bounce">
+                <caption>Transition</caption>
+                <description>Position of the message.</description>
+                <enumerationValues>
+                    <enumerationValue key="Bounce">Bounce</enumerationValue>
+                    <enumerationValue key="Slide">Slide</enumerationValue>
+                    <enumerationValue key="Zoom">zoom</enumerationValue>
+                    <enumerationValue key="Flip">flip</enumerationValue>
+                </enumerationValues>
+            </property>
+            <property key="hideProgressBar" type="boolean" required="true" defaultValue="false">
+                <caption>Hide progress bar</caption>
+                <description>Whether or not to show the progress bar.</description>
+            </property>
+            <property key="pauseOnHover" type="boolean" required="true" defaultValue="true">
+                <caption>Pause on hover</caption>
+                <description>Whether or not to pause the timer when hovering over the notification.</description>
+            </property>
+            <property key="pauseOnFocusLoss" type="boolean" required="true" defaultValue="true">
+                <caption>Pause on focus loss</caption>
+                <description>Whether or not to pause the timer when the window loses focus.</description>
+            </property>
+            <property key="rtl" type="boolean" required="true" defaultValue="false">
+                <caption>Right to left</caption>
+                <description>Show content right to left</description>
+            </property>
+            <property key="newestOnTop" type="boolean" required="true" defaultValue="false">
+                <caption>Newest on top</caption>
+                <description>Show newest notification on top</description>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Close notification">
+            <property key="autoCloseContainer" type="integer" required="true" defaultValue="5000">
+                <caption>Close after</caption>
+                <description>Notification will be closed after this time (in ms). Set to 0 to let the user close the message himself.
+Can be overwriten for a specific notification with attribute below.</description>
+            </property>
+            <property key="autoCloseNotification" type="attribute" required="false">
+                <caption>Close after attribute</caption>
+                <description>Notification will be closed after this time (in ms). Set to 0 to let the user close the message himself.</description>
+                <attributeTypes>
+                    <attributeType name="Integer"/>
+                </attributeTypes>
+            </property>
+            <property key="closeButton" type="boolean" required="true" defaultValue="true">
+                <caption>Close button</caption>
+                <description>Whether or not to show a close button.</description>
+            </property>
+            <property key="closeOnClick" type="boolean" required="true" defaultValue="true">
+                <caption>Close on click</caption>
+                <description>Close container when clicked</description>
+            </property>
+            <property key="draggable" type="boolean" required="true" defaultValue="true">
+                <caption>Draggable</caption>
+                <description>Whether or not the notification is draggable</description>
+            </property>
+            <property key="draggablePercent" type="integer" required="true" defaultValue="80">
+                <caption>Draggable percent</caption>
+                <description>The percentage of the notifications width after which it will be dismissed</description>
+            </property>            
+        </propertyGroup>
     </properties>
 </widget>
