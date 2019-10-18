@@ -30,7 +30,7 @@ You can put this widget anywhere on your page, the place where the notifications
 - Close after attribute: Attribute used to overwrite above property for a specific notification.
 - Close button: Whether or not to show a close button.
 - Close on click: Close notification when clicked.
-- Draggable: Whether or not the notification is can be dragged to close it.
-- Draggable percent: The percentage of the notifications width after which it will be closed.
+- Draggable: Whether or not the notification can be dragged to close it.
+- Draggable percent: The percentage of the notifications width that the notification can be dragged after which it will be closed.
 
 
