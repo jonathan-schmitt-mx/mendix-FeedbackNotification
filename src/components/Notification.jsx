@@ -16,6 +16,7 @@ export class Notification extends Component {
     }
 
     render() {
+        // Convert transition prop to actual transition
         var transition;
         if (this.props.transition === 'Slide') {
             transition = Slide;

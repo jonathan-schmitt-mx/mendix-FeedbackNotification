@@ -10,7 +10,7 @@
         <propertyGroup caption="General">
             <property key="showNotification" type="attribute" required="true">
                 <caption>Show Noticication</caption>
-                <description>Boolean that can be set to true to show a message. The widget will change it back to false after the message is shown.</description>
+                <description>Boolean that can be set to true to show the notification. The widget will change it back to false after the notification is shown.</description>
                 <attributeTypes>
                     <attributeType name="Boolean"/>
                 </attributeTypes>
@@ -33,7 +33,7 @@
         <propertyGroup caption="Behavior">
             <property key="position" type="enumeration" required="true" defaultValue="topRight">
                 <caption>Position</caption>
-                <description>Position of the message.</description>
+                <description>Position of the notification.</description>
                 <enumerationValues>
                     <enumerationValue key="topRight">Top right</enumerationValue>
                     <enumerationValue key="topLeft">Top left</enumerationValue>
@@ -45,12 +45,12 @@
             </property>
             <property key="transition" type="enumeration" required="true" defaultValue="Bounce">
                 <caption>Transition</caption>
-                <description>Position of the message.</description>
+                <description>How the notification will pop up on the screen.</description>
                 <enumerationValues>
                     <enumerationValue key="Bounce">Bounce</enumerationValue>
                     <enumerationValue key="Slide">Slide</enumerationValue>
-                    <enumerationValue key="Zoom">zoom</enumerationValue>
-                    <enumerationValue key="Flip">flip</enumerationValue>
+                    <enumerationValue key="Zoom">Zoom</enumerationValue>
+                    <enumerationValue key="Flip">Flip</enumerationValue>
                 </enumerationValues>
             </property>
             <property key="hideProgressBar" type="boolean" required="true" defaultValue="false">
@@ -67,22 +67,22 @@
             </property>
             <property key="rtl" type="boolean" required="true" defaultValue="false">
                 <caption>Right to left</caption>
-                <description>Show content right to left</description>
+                <description>Show content right to left.</description>
             </property>
             <property key="newestOnTop" type="boolean" required="true" defaultValue="false">
                 <caption>Newest on top</caption>
-                <description>Show newest notification on top</description>
+                <description>Show newest notification on top.</description>
             </property>
         </propertyGroup>
         <propertyGroup caption="Close notification">
             <property key="autoCloseContainer" type="integer" required="true" defaultValue="5000">
                 <caption>Close after</caption>
-                <description>Notification will be closed after this time (in ms). Set to 0 to let the user close the message himself.
+                <description>Notification will be closed after this time (in ms). Set to 0 to let the user close it himself.
 Can be overwriten for a specific notification with attribute below.</description>
             </property>
             <property key="autoCloseNotification" type="attribute" required="false">
                 <caption>Close after attribute</caption>
-                <description>Notification will be closed after this time (in ms). Set to 0 to let the user close the message himself.</description>
+                <description>Attribute used to overwrite above property for a specific notification.</description>
                 <attributeTypes>
                     <attributeType name="Integer"/>
                 </attributeTypes>
@@ -93,15 +93,15 @@ Can be overwriten for a specific notification with attribute below.</description
             </property>
             <property key="closeOnClick" type="boolean" required="true" defaultValue="true">
                 <caption>Close on click</caption>
-                <description>Close container when clicked</description>
+                <description>Close container when clicked.</description>
             </property>
             <property key="draggable" type="boolean" required="true" defaultValue="true">
                 <caption>Draggable</caption>
-                <description>Whether or not the notification is draggable</description>
+                <description>Whether or not the notification is draggable.</description>
             </property>
             <property key="draggablePercent" type="integer" required="true" defaultValue="80">
                 <caption>Draggable percent</caption>
-                <description>The percentage of the notifications width after which it will be dismissed</description>
+                <description>The percentage of the notifications width after which it will be closed.</description>
             </property>            
         </propertyGroup>
     </properties>
