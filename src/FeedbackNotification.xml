@@ -93,15 +93,15 @@ Can be overwriten for a specific notification with attribute below.</description
             </property>
             <property key="closeOnClick" type="boolean" required="true" defaultValue="true">
                 <caption>Close on click</caption>
-                <description>Close container when clicked.</description>
+                <description>Close notification when clicked.</description>
             </property>
             <property key="draggable" type="boolean" required="true" defaultValue="true">
                 <caption>Draggable</caption>
-                <description>Whether or not the notification is draggable.</description>
+                <description>Whether or not the notification can be dragged to close it.</description>
             </property>
             <property key="draggablePercent" type="integer" required="true" defaultValue="80">
                 <caption>Draggable percent</caption>
-                <description>The percentage of the notifications width after which it will be closed.</description>
+                <description>The percentage of the notifications width that the notification can be dragged after which it will be closed.</description>
             </property>            
         </propertyGroup>
     </properties>
