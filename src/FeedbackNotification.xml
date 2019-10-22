@@ -9,7 +9,7 @@
     <properties>
         <propertyGroup caption="General">
             <property key="showNotification" type="attribute" required="true">
-                <caption>Show Noticication</caption>
+                <caption>Show Notification</caption>
                 <description>Boolean that can be set to true to show the notification. The widget will change it back to false after the notification is shown.</description>
                 <attributeTypes>
                     <attributeType name="Boolean"/>
