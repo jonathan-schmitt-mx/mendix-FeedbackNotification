@@ -8,6 +8,8 @@ class FeedbackNotification extends Component {
     constructor(props) {
         super(props);
         var position = '';
+        this.onShowAction = this.executeShowAction.bind(this);
+        this.onCloseAction = this.executeCloseAction.bind(this);
     }
     componentDidMount() {
         //Set position of the toast message
@@ -26,6 +28,22 @@ class FeedbackNotification extends Component {
             this.position = 'bottom-center';
         }
     }
+
+    executeShowAction() {
+        this.props.showNotification.setValue(false);
+        //Execute the on show action if needed
+        if (this.props.onShowAction && this.props.onShowAction.canExecute) {
+            this.props.onShowAction.execute();
+        }
+    }
+
+    executeCloseAction() {
+        //Execute the on close action if needed
+        if (this.props.onCloseAction && this.props.onCloseAction.canExecute) {
+            this.props.onCloseAction.execute();
+        }
+    }
+
     render() {
         var autoClose = 5000;
         // If autoClose is set on a specific notification, use this value, else use value set on container
@@ -59,6 +77,8 @@ class FeedbackNotification extends Component {
             pauseOnFocusLoss = {this.props.pauseOnFocusLoss}
             rtl = {this.props.rtl}
             newestOnTop = {this.props.newestOnTop}
+            onShowAction = {this.onShowAction}
+            onCloseAction = {this.onCloseAction}
         />;
     }
 }

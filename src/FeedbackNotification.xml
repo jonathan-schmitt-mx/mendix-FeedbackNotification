@@ -10,7 +10,8 @@
         <propertyGroup caption="General">
             <property key="showNotification" type="attribute" required="true">
                 <caption>Show Notification</caption>
-                <description>Boolean that can be set to true to show the notification. The widget will change it back to false after the notification is shown.</description>
+                <description>Boolean that can be set to true to show the notification. The widget will change it back to false after the notification is shown. 
+The attribute will not be committed. You can use one of the actions in the Actions tab to commit the object if needed.</description>
                 <attributeTypes>
                     <attributeType name="Boolean"/>
                 </attributeTypes>
@@ -28,6 +29,16 @@
                 <attributeTypes>
                     <attributeType name="String"/>
                 </attributeTypes>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Actions">
+            <property key="onShowAction" type="action" required="false">
+                <caption>On Show Action</caption>
+                <description>Action to trigger the notification is shown, e.g. to commit the object such that the notification is not shown again.</description>
+            </property>
+            <property key="onCloseAction" type="action" required="false">
+                <caption>On Close Action</caption>
+                <description>Action to trigger the notification is closed.</description>
             </property>
         </propertyGroup>
         <propertyGroup caption="Behavior">

@@ -4,15 +4,24 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Slide, Zoom, Flip, Bounce } from 'react-toastify';
 
 export class Notification extends Component {
+    constructor(props) {
+        super(props);
+        this.onCloseAction = this.onClose.bind(this);
+    }
     componentDidUpdate () {
         // check if need to show notification
         if(this.props.showNotification.value) {
             toast(this.props.notificationText, {
                 autoClose: this.props.autoClose,
-                className: this.props.className
+                className: this.props.className,
+                onClose: this.onCloseAction
             });
-            this.props.showNotification.setValue(false);
+            this.props.onShowAction();
         }
+    }
+
+    onClose () {
+        this.props.onCloseAction();
     }
 
     render() {
