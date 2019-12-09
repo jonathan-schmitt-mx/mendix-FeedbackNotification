@@ -10,7 +10,8 @@ React widget used to add notifications to your application. Based on https://git
 - Execute action on show and/or close of a notification
 
 ## Configuration
-You can put this widget anywhere on your page, the place where the notifications are shown is controlled within the widget and can be changed with the position attribute. The widget needs a context object, since the notification has to receive its text from a string attribute and the notification will be shown based on a boolean attribute. This boolean attribute will be set back to false by the widget, so only use this boolean for showing a single notifications per time. The widget itself can be used to shown any number of notification, just change the text (if needed) and set the boolean to true again.
+You can put this widget anywhere on your page, the place where the notifications are shown is controlled within the widget and can be changed with the position attribute. The widget cannot be placed in a list, since it should only be rendered once on the page.
+The widget needs a context object, since the notification has to receive its text from a string attribute and the notification will be shown based on a boolean attribute. This boolean attribute will be set back to false by the widget, so only use this boolean for showing a single notifications per time. The widget itself can be used to shown any number of notification, just change the text (if needed) and set the boolean to true again. Make sure that your dataview is editable, otherwise the widget is not allowed to change the boolean attribute.
 
 ### General
 - Show Notification: Boolean attribute that the widget will use. Set to true to show notification, e.g. after a button is clicked or a popup is closed. The widget will change this value back to false after the notification is shown. The attribute will not be committed. You can use one of the actions to commit the object if needed.
