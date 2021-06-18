@@ -1,10 +1,9 @@
 import { Component, createElement } from "react";
-import { hot } from "react-hot-loader/root";
 
 import { Notification } from "./components/Notification";
 import "./ui/FeedbackNotification.css";
 
-class FeedbackNotification extends Component {
+export default class FeedbackNotification extends Component {
     constructor(props) {
         super(props);
         var position = '';
@@ -82,5 +81,3 @@ class FeedbackNotification extends Component {
         />;
     }
 }
-
-export default hot(FeedbackNotification);
