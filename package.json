@@ -5,14 +5,18 @@
   "description": "Widget used to add notifications to your application. Based on https://github.com/fkhadra/react-toastify",
   "copyright": "ITvisors (2019)",
   "author": "Johan Munneke",
+  "engines": {
+    "node": ">=16"
+  },
+  "license": "Apache-2.0",
   "config": {
     "projectPath": "./Test/",
     "mendixHost": "http://localhost:8080",
-    "developmentPort": "3000"
+    "developmentPort": 3000
   },
   "packagePath": "itvisors",
   "scripts": {
-    "start": "pluggable-widgets-tools start:server --open",
+    "start": "pluggable-widgets-tools start:server",
     "dev": "pluggable-widgets-tools start:web",
     "build": "pluggable-widgets-tools build:web",
     "lint": "pluggable-widgets-tools lint",
@@ -20,12 +24,19 @@
     "prerelease": "npm run lint",
     "release": "pluggable-widgets-tools release:web"
   },
-  "license": "Apache-2.0",
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "^8.18.1"
+    "@mendix/pluggable-widgets-tools": "^9.24.0"
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "react-toastify": "^7.0.4"
+    "react-toastify": "^9.1.2"
+  },
+  "resolutions": {
+    "react": "18.2.0",
+    "react-native": "0.70.7"
+  },
+  "overrides": {
+    "react": "18.2.0",
+    "react-native": "0.70.7"
   }
 }
