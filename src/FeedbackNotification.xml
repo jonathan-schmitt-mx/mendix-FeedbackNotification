@@ -8,35 +8,50 @@
     <icon/>
     <properties>
         <propertyGroup caption="General">
-            <property key="showNotification" type="attribute" required="true">
-                <caption>Show Notification</caption>
-                <description>Boolean that can be set to true to show the notification. The widget will change it back to false after the notification is shown. 
-The attribute will not be committed. You can use one of the actions in the Actions tab to commit the object if needed.</description>
-                <attributeTypes>
-                    <attributeType name="Boolean"/>
-                </attributeTypes>
+            <property key="datasourceNotifications" type="datasource" isList="true" required="true">
+                <caption>Data source</caption>
+                <description />
             </property>
-            <property key="notificationText" type="attribute" required="true">
+            <property key="notificationText" type="attribute" dataSource="datasourceNotifications" required="true">
                 <caption>Notification Text</caption>
                 <description>Text to show in the notification.</description>
                 <attributeTypes>
                     <attributeType name="String"/>
                 </attributeTypes>
             </property>
-            <property key="className" type="attribute" required="false">
+            <property key="notificationType" type="expression" dataSource="datasourceNotifications" required="true" defaultValue="'info'">
+                <caption>Type</caption>
+                <description>Can be used to set a type for the toast message, which will change the styling and add a icon. 
+Type can be "info", "success", "warning", "error" or "default". Make sure you write it correctly.</description>
+                <returnType type="String"/>
+            </property>
+            <property key="notificationTheme" type="expression" dataSource="datasourceNotifications" required="true" defaultValue="'light'">
+                <caption>Theme</caption>
+                <description>Can be used to set a theme for the toast message, which will change the styling. 
+Theme can be "light", "dark" or "colored". Make sure you write it correctly.</description>
+                <returnType type="String"/>
+            </property>
+            <property key="notificationClassName" type="expression" dataSource="datasourceNotifications" required="false">
                 <caption>Class</caption>
                 <description>Class to give to a specific notification.</description>
-                <attributeTypes>
-                    <attributeType name="String"/>
-                </attributeTypes>
+                <returnType type="String"/>
+            </property>
+            <property key="theme" type="enumeration" required="true" defaultValue="light">
+                <caption>Theme</caption>
+                <description>Theme the notifications.</description>
+                <enumerationValues>
+                    <enumerationValue key="light">light</enumerationValue>
+                    <enumerationValue key="dark">dark</enumerationValue>
+                    <enumerationValue key="colored">colored</enumerationValue>
+                </enumerationValues>
             </property>
         </propertyGroup>
         <propertyGroup caption="Actions">
-            <property key="onShowAction" type="action" required="false">
+            <property key="onShowAction" type="action" dataSource="datasourceNotifications" required="false">
                 <caption>On Show Action</caption>
                 <description>Action to trigger the notification is shown, e.g. to commit the object such that the notification is not shown again.</description>
             </property>
-            <property key="onCloseAction" type="action" required="false">
+            <property key="onCloseAction" type="action" dataSource="datasourceNotifications" required="false">
                 <caption>On Close Action</caption>
                 <description>Action to trigger the notification is closed.</description>
             </property>
@@ -64,6 +79,11 @@ The attribute will not be committed. You can use one of the actions in the Actio
                     <enumerationValue key="Flip">Flip</enumerationValue>
                 </enumerationValues>
             </property>
+            <property key="showIcon" type="expression" dataSource="datasourceNotifications" required="true" defaultValue="true">
+                <caption>Show Icon</caption>
+                <description>Whether or not to show the default icons. Can be set per notification if needed.</description>
+                <returnType type="Boolean"/>
+            </property>
             <property key="hideProgressBar" type="boolean" required="true" defaultValue="false">
                 <caption>Hide progress bar</caption>
                 <description>Whether or not to show the progress bar.</description>
@@ -84,19 +104,16 @@ The attribute will not be committed. You can use one of the actions in the Actio
                 <caption>Newest on top</caption>
                 <description>Show newest notification on top.</description>
             </property>
+            <property key="limit" type="integer" required="true" defaultValue="0">
+                <caption>Limit</caption>
+                <description>Limit amount of notifications to be shown at the same time. 0 means no limit.</description>
+            </property>
         </propertyGroup>
         <propertyGroup caption="Close notification">
-            <property key="autoCloseContainer" type="integer" required="true" defaultValue="5000">
-                <caption>Close after</caption>
-                <description>Notification will be closed after this time (in ms). Set to 0 to let the user close it himself.
-Can be overwriten for a specific notification with attribute below.</description>
-            </property>
-            <property key="autoCloseNotification" type="attribute" required="false">
-                <caption>Close after attribute</caption>
-                <description>Attribute used to overwrite above property for a specific notification.</description>
-                <attributeTypes>
-                    <attributeType name="Integer"/>
-                </attributeTypes>
+            <property key="autoClose" type="expression" dataSource="datasourceNotifications" required="true" defaultValue="5000">
+                <caption>Close after notification</caption>
+                <description>Used to overwrite above property for a specific notification.</description>
+                <returnType type="Integer"/>
             </property>
             <property key="closeButton" type="boolean" required="true" defaultValue="true">
                 <caption>Close button</caption>

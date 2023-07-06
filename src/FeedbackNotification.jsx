@@ -1,12 +1,77 @@
-import { createElement } from "react";
+import { createElement, useEffect } from "react";
 
+import { ToastContainer, toast } from 'react-toastify';
+import { Slide, Zoom, Flip, Bounce } from 'react-toastify';
+
+import "react-toastify/dist/ReactToastify.css";
 import "./ui/FeedbackNotification.css";
-import { Notification } from "./components/Notification";
+
 
 export default function FeedbackNotification(props) {
 
+    useEffect(() => {
+        if (props.datasourceNotifications.items) {
+            for (let itemIndex in props.datasourceNotifications.items) {
+                const notification = props.datasourceNotifications.items[itemIndex];
+                const notificationText = getNotificationText(notification);
+                const notificationAutoClose = getNotificationAutoClose(notification);
+                const notificationClassName = getNotificationClassName(notification);
+                const notificationType = getNotificationType(notification);
+                const notificationShowIcon = getNotificationShowIcon(notification);
+                const notificationTheme = getNotificationTheme(notification);
+                
+                switch (notificationType) {
+                    case 'info':
+                        toast.info(notificationText, {
+                            autoClose: notificationAutoClose,
+                            className: notificationClassName,
+                            onClose: executeCloseAction,
+                            theme: notificationTheme,
+                            icon: notificationShowIcon
+                        });
+                        break;
+                    case 'success':
+                        toast.success(notificationText, {
+                            autoClose: notificationAutoClose,
+                            className: notificationClassName,
+                            onClose: executeCloseAction,
+                            theme: notificationTheme,
+                            icon: notificationShowIcon
+                        });
+                        break;
+                    case 'warning':
+                        toast.warn(notificationText, {
+                            autoClose: notificationAutoClose,
+                            className: notificationClassName,
+                            onClose: executeCloseAction,
+                            theme: notificationTheme,
+                            icon: notificationShowIcon
+                        });
+                        break;
+                    case 'error':
+                        toast.error(notificationText, {
+                            autoClose: notificationAutoClose,
+                            className: notificationClassName,
+                            onClose: executeCloseAction,
+                            theme: notificationTheme,
+                            icon: notificationShowIcon
+                        });
+                        break;
+                    default:
+                        toast(notificationText, {
+                            autoClose: notificationAutoClose,
+                            className: notificationClassName,
+                            onClose: executeCloseAction,
+                            theme: notificationTheme,
+                            icon: notificationShowIcon
+                        });
+                }
+                executeShowAction();
+            }     
+        }
+    }, [props.datasourceNotifications.items])
+
     const executeShowAction = () => {
-        props.showNotification.setValue(false);
         //Execute the on show action if needed
         if (props.onShowAction && props.onShowAction.canExecute) {
             props.onShowAction.execute();
@@ -20,54 +85,93 @@ export default function FeedbackNotification(props) {
         }
     }
 
-
-    // Convert position
-    let position = '';
-    if (props.position === 'topLeft') {
-        position = 'top-left';
-    } else if (props.position === 'topRight') {
-        position = 'top-right';
-    } else if (props.position === 'topCenter') {
-        position = 'top-center';
-    } else if (props.position === 'bottomRight') {
-        position = 'bottom-right';
-    } else if (props.position === 'bottomLeft') {
-        position = 'bottom-left';
-    } else {
-        position = 'bottom-center';
+    const getNotificationText = (notification) => {
+        return props.notificationText.get(notification).value;
     }
 
-    let autoClose = props.autoCloseContainer;
-    // If autoClose is set on a specific notification, use this value, else use value set on container
-    if (props.autoCloseNotification !== undefined) {
-        autoClose = parseInt(props.autoCloseNotification.displayValue, 0);
-    }
-    // If autoclose is 0, set to false, then user has to close message himself
-    if (autoClose === 0) {
-        autoClose = false;
+    const getNotificationShowIcon = (notification) => {
+        let showIcon = props.showIcon.get(notification).value;
+        return showIcon ? undefined : false;
     }
 
-    // get className and notificationText, can both be empty
-    let notificationText = props.notificationText === undefined ? '' : props.notificationText.value;
-    let className = props.className === undefined ? undefined : props.className.value;
+    const getNotificationClassName = (notification) => {
+        if (props.className) {
+            return props.className.get(notification).value;
+        }
+        return '';
+    }
 
-    return <Notification 
-        showNotification = {props.showNotification}
-        position = {position}
-        autoClose = {autoClose}
+    const getNotificationType = (notification) => {
+        if (props.notificationType) {
+            return props.notificationType.get(notification).value.toLowerCase();
+        }
+        return '';
+    }
+
+    const getNotificationTheme = (notification) => {
+        if (props.notificationTheme) {
+            return props.notificationTheme.get(notification).value.toLowerCase();
+        }
+        return '';
+    }
+
+    const getNotificationAutoClose = (notification) => {
+        let autoClose = parseInt(props.autoClose.get(notification).value, undefined);
+        // If autoclose is 0, set to false, then user has to close message himself
+        return autoClose === 0 ? false : autoClose;
+    }
+
+    const getPosition = () => {
+        // Convert position
+        if (props.position === 'topLeft') {
+            return 'top-left';
+        } else if (props.position === 'topRight') {
+            return 'top-right';
+        } else if (props.position === 'topCenter') {
+            return 'top-center';
+        } else if (props.position === 'bottomRight') {
+            return 'bottom-right';
+        } else if (props.position === 'bottomLeft') {
+            return 'bottom-left';
+        } else {
+            return 'bottom-center';
+        }
+    }
+
+    const getTransition = () => {
+        // Convert transition prop to actual transition
+        if (props.transition === 'Slide') {
+            return Slide;
+        } else if (props.transition === 'Zoom') {
+            return Zoom;
+        } else if (props.transition === 'Flip') {
+            return Flip;
+        } else {
+            return Bounce;
+        }
+    }
+
+    // default = not default
+    // theme dynamic?
+    //empty checks, e.g. auto close
+    // styling icons
+    //fix icons
+    //dynamic function type
+    //vars not correct imported
+
+    return <ToastContainer 
+        position = {getPosition()}
         closeButton = {props.closeButton === false ? false : undefined}
         closeOnClick = {props.closeOnClick}
         draggable = {props.draggable}
         draggablePercent = {props.draggablePercent}
-        notificationText = {notificationText}
-        className = {className}
-        transition = {props.transition}
+        transition = {getTransition()}
         hideProgressBar = {props.hideProgressBar}
         pauseOnHover = {props.pauseOnHover}
         pauseOnFocusLoss = {props.pauseOnFocusLoss}
         rtl = {props.rtl}
         newestOnTop = {props.newestOnTop}
-        onShowAction = {executeShowAction}
-        onCloseAction = {executeCloseAction}
+        limit = {props.limit > 0 ? props.limit : undefined}
     />;
 }
+

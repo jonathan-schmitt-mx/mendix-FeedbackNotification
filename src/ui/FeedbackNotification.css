@@ -1,6 +1,52 @@
 /*
 Place your custom CSS here
 */
-.Toastify__progress-bar {
-    background: #0595DB;
+/* fix light and dark theme */
+.Toastify__toast.Toastify__toast-theme--dark {
+    background: var(--toastify-color-dark);
+    color: var(--toastify-text-color-dark);
+}
+
+.Toastify__toast.Toastify__toast-theme--light {
+    background: var(--toastify-color-light);
+    color: var(--toastify-text-color-light);
+}
+
+.Toastify__toast .Toastify__progress-bar-theme--light {
+    background: var(--toastify-color-progress-light);
+}
+
+.Toastify__toast .Toastify__progress-bar-theme--dark {
+    background: var(--toastify-color-progress-dark);
+}
+
+.Toastify__toast .Toastify__progress-bar-theme--light {
+    background: var(--toastify-color-progress-light);
+}
+
+.Toastify__toast .Toastify__progress-bar-theme--dark {
+    background: var(--toastify-color-progress-dark);
+}
+
+.Toastify__toast .Toastify__progress-bar--info {
+    background: var(--toastify-color-progress-info);
+}
+
+.Toastify__toast .Toastify__progress-bar--success {
+    background: var(--toastify-color-progress-success);
+}
+
+.Toastify__toast .Toastify__progress-bar--warning {
+    background: var(--toastify-color-progress-warning);
+}
+
+.Toastify__toast .Toastify__progress-bar--error {
+    background: var(--toastify-color-progress-error);
+}
+
+.Toastify__toast .Toastify__progress-bar-theme--colored.Toastify__progress-bar--info,
+.Toastify__toast .Toastify__progress-bar-theme--colored.Toastify__progress-bar--success,
+.Toastify__toast .Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning,
+.Toastify__toast .Toastify__progress-bar-theme--colored.Toastify__progress-bar--error {
+    background: var(--toastify-color-transparent);
 }
