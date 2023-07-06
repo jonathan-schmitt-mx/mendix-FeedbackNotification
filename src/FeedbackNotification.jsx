@@ -17,26 +17,26 @@ export default function FeedbackNotification(props) {
                     type: getNotificationType(notification),
                     autoClose: getNotificationAutoClose(notification),
                     className: getNotificationClassName(notification),
-                    onClose: executeCloseAction,
+                    onClose: () => executeCloseAction(notification),
                     theme: getNotificationTheme(notification),
                     icon: getNotificationShowIcon(notification)
                 });
-                executeShowAction();
+                executeShowAction(notification);
             }     
         }
     }, [props.datasourceNotifications.items])
 
-    const executeShowAction = () => {
+    const executeShowAction = (notification) => {
         //Execute the on show action if needed
-        if (props.onShowAction && props.onShowAction.canExecute) {
-            props.onShowAction.execute();
+        if (props.onShowAction && props.onShowAction.get(notification).canExecute) {
+            props.onShowAction.get(notification).execute();
         }
     }
 
-    const executeCloseAction = () => {
+    const executeCloseAction = (notification) => {
         //Execute the on close action if needed
-        if (props.onCloseAction && props.onCloseAction.canExecute) {
-            props.onCloseAction.execute();
+        if (props.onCloseAction && props.onCloseAction.get(notification).canExecute) {
+            props.onCloseAction.get(notification).execute();
         }
     }
 

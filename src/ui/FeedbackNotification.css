@@ -20,7 +20,8 @@ Place your custom CSS here
     background: var(--toastify-color-progress-dark);
 }
 
-.Toastify__toast .Toastify__progress-bar-theme--light {
+.Toastify__toast .Toastify__progress-bar-theme--light, 
+.Toastify__toast .Toastify__progress-bar-theme--colored.Toastify__progress-bar--default {
     background: var(--toastify-color-progress-light);
 }
 
@@ -50,3 +51,10 @@ Place your custom CSS here
 .Toastify__toast .Toastify__progress-bar-theme--colored.Toastify__progress-bar--error {
     background: var(--toastify-color-transparent);
 }
+
+.Toastify__toast .Toastify__close-button--light,
+.Toastify__toast.Toastify__toast--default .Toastify__close-button--colored {
+    color: #000;
+    opacity: 0.3;
+}
+
