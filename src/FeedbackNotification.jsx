@@ -65,9 +65,12 @@ export default function FeedbackNotification(props) {
 
     const getNotificationTheme = (notification) => {
         if (props.notificationTheme) {
-            return props.notificationTheme.get(notification).value.toLowerCase();
+            let theme = props.notificationTheme.get(notification).value.toLowerCase();
+            if (theme === 'light' || theme === 'dark' || theme === 'colored') {
+                return theme;
+            }
         }
-        return '';
+        return 'light';
     }
 
     const getNotificationAutoClose = (notification) => {
@@ -118,7 +121,7 @@ export default function FeedbackNotification(props) {
         pauseOnFocusLoss = {props.pauseOnFocusLoss}
         rtl = {props.rtl}
         newestOnTop = {props.newestOnTop}
-        limit = {props.limit > 0 ? props.limit : undefined}
+        limit = {props.limit.value && props.limit.value > 0 ? props.limit.value : undefined}
     />;
 }
 

@@ -36,15 +36,6 @@ Theme can be "light", "dark" or "colored". Make sure you write it correctly.</de
                 <description>Class to give to a specific notification.</description>
                 <returnType type="String"/>
             </property>
-            <property key="theme" type="enumeration" required="true" defaultValue="light">
-                <caption>Theme</caption>
-                <description>Theme the notifications.</description>
-                <enumerationValues>
-                    <enumerationValue key="light">light</enumerationValue>
-                    <enumerationValue key="dark">dark</enumerationValue>
-                    <enumerationValue key="colored">colored</enumerationValue>
-                </enumerationValues>
-            </property>
         </propertyGroup>
         <propertyGroup caption="Actions">
             <property key="onShowAction" type="action" dataSource="datasourceNotifications" required="false">
@@ -104,9 +95,10 @@ Theme can be "light", "dark" or "colored". Make sure you write it correctly.</de
                 <caption>Newest on top</caption>
                 <description>Show newest notification on top.</description>
             </property>
-            <property key="limit" type="integer" required="true" defaultValue="0">
+            <property key="limit" type="expression" required="true" defaultValue="0">
                 <caption>Limit</caption>
                 <description>Limit amount of notifications to be shown at the same time. 0 means no limit.</description>
+                <returnType type="Integer"/>
             </property>
         </propertyGroup>
         <propertyGroup caption="Close notification">

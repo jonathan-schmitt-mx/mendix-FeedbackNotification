@@ -1,7 +1,7 @@
 /*
 Place your custom CSS here
 */
-/* fix light and dark theme */
+/* fixes themes */
 .Toastify__toast.Toastify__toast-theme--dark {
     background: var(--toastify-color-dark);
     color: var(--toastify-text-color-dark);
