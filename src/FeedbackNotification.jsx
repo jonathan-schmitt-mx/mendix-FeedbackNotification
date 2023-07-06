@@ -13,59 +13,14 @@ export default function FeedbackNotification(props) {
         if (props.datasourceNotifications.items) {
             for (let itemIndex in props.datasourceNotifications.items) {
                 const notification = props.datasourceNotifications.items[itemIndex];
-                const notificationText = getNotificationText(notification);
-                const notificationAutoClose = getNotificationAutoClose(notification);
-                const notificationClassName = getNotificationClassName(notification);
-                const notificationType = getNotificationType(notification);
-                const notificationShowIcon = getNotificationShowIcon(notification);
-                const notificationTheme = getNotificationTheme(notification);
-                
-                switch (notificationType) {
-                    case 'info':
-                        toast.info(notificationText, {
-                            autoClose: notificationAutoClose,
-                            className: notificationClassName,
-                            onClose: executeCloseAction,
-                            theme: notificationTheme,
-                            icon: notificationShowIcon
-                        });
-                        break;
-                    case 'success':
-                        toast.success(notificationText, {
-                            autoClose: notificationAutoClose,
-                            className: notificationClassName,
-                            onClose: executeCloseAction,
-                            theme: notificationTheme,
-                            icon: notificationShowIcon
-                        });
-                        break;
-                    case 'warning':
-                        toast.warn(notificationText, {
-                            autoClose: notificationAutoClose,
-                            className: notificationClassName,
-                            onClose: executeCloseAction,
-                            theme: notificationTheme,
-                            icon: notificationShowIcon
-                        });
-                        break;
-                    case 'error':
-                        toast.error(notificationText, {
-                            autoClose: notificationAutoClose,
-                            className: notificationClassName,
-                            onClose: executeCloseAction,
-                            theme: notificationTheme,
-                            icon: notificationShowIcon
-                        });
-                        break;
-                    default:
-                        toast(notificationText, {
-                            autoClose: notificationAutoClose,
-                            className: notificationClassName,
-                            onClose: executeCloseAction,
-                            theme: notificationTheme,
-                            icon: notificationShowIcon
-                        });
-                }
+                toast(getNotificationText(notification), {
+                    type: getNotificationType(notification),
+                    autoClose: getNotificationAutoClose(notification),
+                    className: getNotificationClassName(notification),
+                    onClose: executeCloseAction,
+                    theme: getNotificationTheme(notification),
+                    icon: getNotificationShowIcon(notification)
+                });
                 executeShowAction();
             }     
         }
@@ -150,14 +105,6 @@ export default function FeedbackNotification(props) {
             return Bounce;
         }
     }
-
-    // default = not default
-    // theme dynamic?
-    //empty checks, e.g. auto close
-    // styling icons
-    //fix icons
-    //dynamic function type
-    //vars not correct imported
 
     return <ToastContainer 
         position = {getPosition()}
