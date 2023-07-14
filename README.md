@@ -2,16 +2,18 @@
 React widget used to add notifications to your application. Based on https://github.com/fkhadra/react-toastify.
 
 ## Features
-- Show notification on boolean change
+- Show notifications
+- Different default styling options
 - Show loading bar based on the time that notification is shown
 - Base time that notification is shown on an attribute
 - Pause timer when hovered or site is not focussed
 - Close notification by clicking it or dragging it
 - Execute action on show and/or close of a notification
+- Limit the number of notifications shown at the same time
 
 ## Configuration
 You can put this widget anywhere on your page, the place where the notifications are shown is controlled within the widget and can be changed with the position attribute. The widget cannot be placed in a list, since it should only be rendered once on the page.
-The widget needs a context object, since the notification has to receive its text from a string attribute and the notification will be shown based on a boolean attribute. This boolean attribute will be set back to false by the widget, so only use this boolean for showing a single notifications per time. The widget itself can be used to shown any number of notification, just change the text (if needed) and set the boolean to true again. Make sure that your dataview is editable, otherwise the widget is not allowed to change the boolean attribute.
+The widget needs a data source and a context object that can be refreshed when there are new notifications(perhaps in combination with a timer). The widget shows all notifications that are returned in the datasource. You can either use a on show event to mark the notification as shown and not show it again or use the property 'is shown' and link this to the attribut, such that the widget can set this attribute. 
 
 ### General
 - Show Notification: Boolean attribute that the widget will use. Set to true to show notification, e.g. after a button is clicked or a popup is closed. The widget will change this value back to false after the notification is shown. The attribute will not be committed. You can use one of the actions to commit the object if needed.
@@ -21,6 +23,7 @@ The widget needs a context object, since the notification has to receive its tex
 ### Actions
 - On Show Action: Action to trigger the notification is shown, e.g. to commit the object such that the notification is not shown again.
 - On Close Action: Action to trigger the notification is closed.
+- 
 ### Behavior
 - Position: Where the notification will be shown on the screen.
 - Transition: How the notification will pop up on the screen.
