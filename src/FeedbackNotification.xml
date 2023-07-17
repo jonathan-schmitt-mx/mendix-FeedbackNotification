@@ -40,7 +40,7 @@ Theme can be "light", "dark" or "colored". Make sure you write it correctly.</de
         <propertyGroup caption="Actions">
             <property key="onShowAction" type="action" dataSource="datasourceNotifications" required="false">
                 <caption>On Show Action</caption>
-                <description>Action to trigger the notification is shown, e.g. to commit the object such that the notification is not shown again.</description>
+                <description>Action to trigger the notification is shown, e.g. to change and commit the object such that the notification is not shown again.</description>
             </property>
             <property key="onCloseAction" type="action" dataSource="datasourceNotifications" required="false">
                 <caption>On Close Action</caption>
@@ -103,8 +103,8 @@ Theme can be "light", "dark" or "colored". Make sure you write it correctly.</de
         </propertyGroup>
         <propertyGroup caption="Close notification">
             <property key="autoClose" type="expression" dataSource="datasourceNotifications" required="true" defaultValue="5000">
-                <caption>Close after notification</caption>
-                <description>Used to overwrite above property for a specific notification.</description>
+                <caption>Close after</caption>
+                <description>Notification will be closed after this time (in ms). Set to 0 to let the user close it himself.</description>
                 <returnType type="Integer"/>
             </property>
             <property key="closeButton" type="boolean" required="true" defaultValue="true">

@@ -10,6 +10,7 @@ import "./ui/FeedbackNotification.css";
 export default function FeedbackNotification(props) {
 
     useEffect(() => {
+        // If new items retrieved, create toast messages
         if (props.datasourceNotifications.items) {
             for (let itemIndex in props.datasourceNotifications.items) {
                 const notification = props.datasourceNotifications.items[itemIndex];
@@ -22,7 +23,7 @@ export default function FeedbackNotification(props) {
                     icon: getNotificationShowIcon(notification)
                 });
                 executeShowAction(notification);
-            }     
+            }
         }
     }, [props.datasourceNotifications.items])
 
@@ -58,9 +59,14 @@ export default function FeedbackNotification(props) {
 
     const getNotificationType = (notification) => {
         if (props.notificationType) {
-            return props.notificationType.get(notification).value.toLowerCase();
+            let notificationType = props.notificationType.get(notification).value.toLowerCase();
+            if (notificationType !== 'info' && notificationType !== 'default' && notificationType !== 'success' && notificationType !== 'warning' && notificationType !== 'error') {
+                return 'info'
+            } else {
+                return notificationType
+            }
         }
-        return '';
+        return 'info';
     }
 
     const getNotificationTheme = (notification) => {
@@ -109,19 +115,19 @@ export default function FeedbackNotification(props) {
         }
     }
 
-    return <ToastContainer 
-        position = {getPosition()}
-        closeButton = {props.closeButton === false ? false : undefined}
-        closeOnClick = {props.closeOnClick}
-        draggable = {props.draggable}
-        draggablePercent = {props.draggablePercent}
-        transition = {getTransition()}
-        hideProgressBar = {props.hideProgressBar}
-        pauseOnHover = {props.pauseOnHover}
-        pauseOnFocusLoss = {props.pauseOnFocusLoss}
-        rtl = {props.rtl}
-        newestOnTop = {props.newestOnTop}
-        limit = {props.limit.value && props.limit.value > 0 ? props.limit.value : undefined}
+    return <ToastContainer
+        position={getPosition()}
+        closeButton={props.closeButton}
+        closeOnClick={props.closeOnClick}
+        draggable={props.draggable}
+        draggablePercent={props.draggablePercent}
+        transition={getTransition()}
+        hideProgressBar={props.hideProgressBar}
+        pauseOnHover={props.pauseOnHover}
+        pauseOnFocusLoss={props.pauseOnFocusLoss}
+        rtl={props.rtl}
+        newestOnTop={props.newestOnTop}
+        limit={props.limit.value && props.limit.value > 0 ? props.limit.value : undefined}
     />;
 }
 
