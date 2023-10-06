@@ -12,9 +12,14 @@
                 <caption>Data source</caption>
                 <description />
             </property>
+            <property key="headerText" type="expression" dataSource="datasourceNotifications" required="false">
+                <caption>Header Text</caption>
+                <description>Header text to show in the notification.</description>
+                <returnType type="String"/>
+            </property>
             <property key="notificationText" type="attribute" dataSource="datasourceNotifications" required="true">
                 <caption>Notification Text</caption>
-                <description>Text to show in the notification.</description>
+                <description>Detail text to show in the notification.</description>
                 <attributeTypes>
                     <attributeType name="String"/>
                 </attributeTypes>
@@ -45,6 +50,20 @@ Theme can be "light", "dark" or "colored". Make sure you write it correctly.</de
             <property key="onCloseAction" type="action" dataSource="datasourceNotifications" required="false">
                 <caption>On Close Action</caption>
                 <description>Action to trigger the notification is closed.</description>
+            </property>
+            <property key="onClickAction" type="action" dataSource="datasourceNotifications" required="false">
+                <caption>On Click Action</caption>
+                <description>Action to trigger when the button in the notification is clicked.</description>
+            </property>
+            <property key="onClickLabel" type="expression" dataSource="datasourceNotifications" required="false">
+                <caption>On Click label</caption>
+                <description>Label to give to on click button.</description>
+                <returnType type="String"/>
+            </property>
+            <property key="onClickClass" type="expression" dataSource="datasourceNotifications" required="false">
+                <caption>On Click Class</caption>
+                <description>Class to give to on click button.</description>
+                <returnType type="String"/>
             </property>
         </propertyGroup>
         <propertyGroup caption="Behavior">
